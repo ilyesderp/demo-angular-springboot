@@ -1,0 +1,13 @@
+﻿# OS / editor
+Thumbs.db
+.DS_Store
+.idea/
+
+# Backend (Spring Boot / Maven / Gradle)
+backend/target/
+backend/build/
+backend/.gradle/
+*.class
+*.log
+
+.env
