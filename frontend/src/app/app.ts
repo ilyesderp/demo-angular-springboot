@@ -1,23 +1,13 @@
 import { Component, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { catchError, map, of } from 'rxjs';
-import { HelloService } from './api/hello.service';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { AuthService } from './core/auth.service';
 
 @Component({
-  imports: [RouterOutlet],
   selector: 'app-root',
-  styleUrl: './app.scss',
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './app.html',
+  styleUrl: './app.scss',
 })
 export class App {
-  private readonly hello = inject(HelloService);
-
-  protected readonly message = toSignal(
-    this.hello.getHello().pipe(
-      map((res) => res.message),
-      catchError(() => of('Backend unreachable')),
-    ),
-    { initialValue: 'Loading...' },
-  );
+  protected readonly auth = inject(AuthService);
 }
