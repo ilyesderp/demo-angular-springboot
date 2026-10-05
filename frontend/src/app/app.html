@@ -1,5 +1,15 @@
-<main>
-  <h1>Hello, frontend</h1>
-  <p>Backend says: {{ message() }}</p>
+<header class="topbar">
+  <a class="brand" routerLink="/">Ledger</a>
+  @if (auth.isAuthenticated()) {
+    <nav>
+      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      <a routerLink="/invoices" routerLinkActive="active">Invoices</a>
+      <a routerLink="/clients" routerLinkActive="active">Clients</a>
+    </nav>
+    <button type="button" class="link" (click)="auth.logout()">Log out</button>
+  }
+</header>
+
+<main class="page">
+  <router-outlet />
 </main>
-<router-outlet />
